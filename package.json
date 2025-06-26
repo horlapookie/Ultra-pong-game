@@ -1,8 +1,9 @@
+
 {
   "name": "pong-game",
   "version": "1.0.0",
   "description": "Simple Pong game",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
