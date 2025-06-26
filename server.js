@@ -1,14 +1,17 @@
+
 const express = require('express');
+const path = require('path');
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-// Serve all files in the current directory
-app.use(express.static(__dirname));
+// Serve all files in the current directory statically
+app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Pong game is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
