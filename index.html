@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f0f23">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🏓 ULTRA PONG MASTER - The Ultimate Experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen">
+        <div class="loading-content">
+            <div class="logo-animation">🏓</div>
+            <h1>ULTRA PONG MASTER</h1>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+            <p id="loadingText">Loading the ultimate experience...</p>
+        </div>
+    </div>
+
+    <!-- Welcome/Login Screen -->
+    <div id="welcomeScreen" class="screen hidden">
+        <div class="welcome-container">
+            <div class="app-logo">
+                <div class="logo-icon">🏓</div>
+                <h1>ULTRA PONG MASTER</h1>
+                <p class="tagline">The Most Advanced Ping Pong Experience Ever Created</p>
+            </div>
+            
+            <div class="login-section">
+                <h2>👋 Welcome, Champion!</h2>
+                <div class="username-input">
+                    <input type="text" id="usernameInput" placeholder="Enter your username" maxlength="15">
+                    <button id="loginBtn">🚀 START JOURNEY</button>
+                </div>
+                <div class="quick-login">
+                    <button class="quick-btn" onclick="quickLogin('PongMaster')">🏆 PongMaster</button>
+                    <button class="quick-btn" onclick="quickLogin('Champion')">👑 Champion</button>
+                    <button class="quick-btn" onclick="quickLogin('Legend')">⭐ Legend</button>
+                </div>
+            </div>
+
+            <div class="features-preview">
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <span>30 Epic Levels</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🛒</span>
+                    <span>Premium Store</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🏆</span>
+                    <span>Achievements</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span>Power-Ups</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Home Screen -->
+    <div id="homeScreen" class="screen hidden">
+        <nav class="top-nav">
+            <div class="nav-left">
+                <div class="user-info">
+                    <div class="avatar">👤</div>
+                    <div class="user-details">
+                        <span class="username" id="currentUsername">Player</span>
+                        <span class="user-level">Level <span id="userLevel">1</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-center">
+                <h1>🏓 ULTRA PONG MASTER</h1>
+            </div>
+            <div class="nav-right">
+                <div class="currency">
+                    <span class="coins">💰 <span id="totalCoins">0</span></span>
+                    <span class="gems">💎 <span id="totalGems">0</span></span>
+                </div>
+                <button id="settingsBtn" class="nav-btn">⚙️</button>
+            </div>
+        </nav>
+
+        <div class="home-content">
+            <div class="stats-dashboard">
+                <div class="stat-card">
+                    <span class="stat-icon">🎯</span>
+                    <div class="stat-info">
+                        <span class="stat-value" id="currentLevel">1</span>
+                        <span class="stat-label">Current Level</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🏆</span>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalWins">0</span>
+                        <span class="stat-label">Total Wins</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⭐</span>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalStars">0</span>
+                        <span class="stat-label">Stars Earned</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🔥</span>
+                    <div class="stat-info">
+                        <span class="stat-value" id="winStreak">0</span>
+                        <span class="stat-label">Win Streak</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-menu">
+                <div class="game-mode-selection">
+                    <button id="vsComputerBtn" class="menu-btn primary">
+                        <span class="btn-icon">🤖</span>
+                        <span class="btn-text">VS COMPUTER</span>
+                        <span class="btn-subtitle">Play Against AI</span>
+                    </button>
+                    
+                    <button id="twoPlayerBtn" class="menu-btn primary">
+                        <span class="btn-icon">👥</span>
+                        <span class="btn-text">TWO PLAYER</span>
+                        <span class="btn-subtitle">Play With Friend</span>
+                    </button>
+                </div>
+                
+                <div class="menu-grid">
+                    <button id="levelsBtn" class="menu-btn">
+                        <span class="btn-icon">🗺️</span>
+                        <span class="btn-text">LEVELS</span>
+                        <span class="btn-subtitle">Choose Your Challenge</span>
+                    </button>
+                    
+                    <button id="storeBtn" class="menu-btn">
+                        <span class="btn-icon">🛒</span>
+                        <span class="btn-text">STORE</span>
+                        <span class="btn-subtitle">Upgrade Your Game</span>
+                    </button>
+                    
+                    <button id="achievementsBtn" class="menu-btn">
+                        <span class="btn-icon">🏆</span>
+                        <span class="btn-text">ACHIEVEMENTS</span>
+                        <span class="btn-subtitle">Track Your Progress</span>
+                    </button>
+                    
+                    <button id="leaderboardBtn" class="menu-btn">
+                        <span class="btn-icon">📊</span>
+                        <span class="btn-text">LEADERBOARD</span>
+                        <span class="btn-subtitle">Global Rankings</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Selection Screen -->
+    <div id="levelScreen" class="screen hidden">
+        <div class="screen-header">
+            <button id="backToHome" class="back-btn">← Back</button>
+            <h2>🗺️ SELECT LEVEL</h2>
+            <div class="level-progress">
+                <span id="levelsCompleted">0</span>/30 Completed
+            </div>
+        </div>
+        
+        <div class="levels-container" id="levelsContainer">
+            <!-- Levels will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Store Screen -->
+    <div id="storeScreen" class="screen hidden">
+        <div class="screen-header">
+            <button id="backToHomeFromStore" class="back-btn">← Back</button>
+            <h2>🛒 PREMIUM STORE</h2>
+            <div class="currency-display">
+                <span class="coins">💰 <span id="storeCoins">0</span></span>
+                <span class="gems">💎 <span id="storeGems">0</span></span>
+            </div>
+        </div>
+
+        <div class="store-tabs">
+            <button class="store-tab active" data-tab="paddles">🏓 Paddles</button>
+            <button class="store-tab" data-tab="balls">⚪ Balls</button>
+            <button class="store-tab" data-tab="powerups">⚡ Power-Ups</button>
+            <button class="store-tab" data-tab="themes">🎨 Themes</button>
+        </div>
+
+        <div class="store-content">
+            <div class="store-section active" id="paddlesStore">
+                <div class="store-items" id="paddleItems"></div>
+            </div>
+            <div class="store-section" id="ballsStore">
+                <div class="store-items" id="ballItems"></div>
+            </div>
+            <div class="store-section" id="powerupsStore">
+                <div class="store-items" id="powerupItems"></div>
+            </div>
+            <div class="store-section" id="themesStore">
+                <div class="store-items" id="themeItems"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Screen -->
+    <div id="achievementsScreen" class="screen hidden">
+        <div class="screen-header">
+            <button id="backToHomeFromAchievements" class="back-btn">← Back</button>
+            <h2>🏆 ACHIEVEMENTS</h2>
+            <div class="achievement-progress">
+                <span id="achievementsUnlocked">0</span>/50 Unlocked
+            </div>
+        </div>
+        
+        <div class="achievements-container" id="achievementsContainer">
+            <!-- Achievements will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen hidden">
+        <div class="game-header">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Level</span>
+                    <span class="score" id="gameCurrentLevel">1</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Player 1</span>
+                    <span class="score" id="player1Score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Player 2</span>
+                    <span class="score" id="player2Score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Time</span>
+                    <span class="score" id="gameTime">0:00</span>
+                </div>
+            </div>
+            <div class="game-controls">
+                <button id="menuToggle" class="game-btn">⋯</button>
+                <div id="gameMenu" class="hidden" style="position: absolute; top: 100%; right: 0; background: rgba(0,0,0,0.9); border-radius: 10px; padding: 10px;">
+                    <button id="pauseGame" class="game-btn" style="display: block; margin-bottom: 5px;">⏸️ Pause</button>
+                    <button id="quitGame" class="game-btn" style="display: block;">🏠 Home</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="pongCanvas" width="800" height="500"></canvas>
+            <div id="gameOverlay">
+                <div id="powerUpIndicators"></div>
+                <div id="comboCounter" class="hidden">
+                    <span class="combo-text">COMBO x<span id="comboValue">1</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-controls">
+            <div class="touch-instructions">
+                <span class="instruction-icon">🏓</span>
+                <span class="instruction-text">Table Tennis Controls</span>
+                <div class="control-info">
+                    <span>Player 1: Arrow Keys ↑↓←→ or Mouse</span>
+                    <span id="player2Controls">Player 2: WASD Keys</span>
+                    <span>Move vertically and position horizontally for knockouts!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Results Screen -->
+    <div id="resultsScreen" class="screen hidden">
+        <div class="results-content">
+            <div id="victoryResults" class="result-panel hidden">
+                <div class="result-icon">🏆</div>
+                <h2>LEVEL COMPLETE!</h2>
+                <div class="results-stats">
+                    <div class="result-stat">
+                        <span class="stat-label">Time:</span>
+                        <span class="stat-value" id="resultTime">0:00</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Score:</span>
+                        <span class="stat-value" id="resultScore">0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Coins:</span>
+                        <span class="stat-value" id="resultCoins">+0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Stars:</span>
+                        <span class="stat-value" id="resultStars">⭐⭐⭐</span>
+                    </div>
+                </div>
+                <div class="result-buttons">
+                    <button id="nextLevelBtn" class="result-btn primary">NEXT LEVEL</button>
+                    <button id="replayLevelBtn" class="result-btn">REPLAY</button>
+                    <button id="homeFromResults" class="result-btn">HOME</button>
+                </div>
+            </div>
+
+            <div id="defeatResults" class="result-panel hidden">
+                <div class="result-icon">💀</div>
+                <h2>LEVEL FAILED</h2>
+                <div class="defeat-message">
+                    <p>Don't give up! Try upgrading your paddle or using power-ups!</p>
+                </div>
+                <div class="result-buttons">
+                    <button id="retryLevelBtn" class="result-btn primary">TRY AGAIN</button>
+                    <button id="upgradeBtn" class="result-btn">UPGRADE</button>
+                    <button id="homeFromDefeat" class="result-btn">HOME</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Settings</h3>
+                <button id="closeSettings" class="close-btn">×</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <label>🔊 Sound Effects</label>
+                    <input type="range" id="soundVolume" min="0" max="100" value="70">
+                </div>
+                <div class="setting-item">
+                    <label>🎵 Background Music</label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>📳 Haptic Feedback</label>
+                    <input type="checkbox" id="hapticFeedback" checked>
+                </div>
+                <div class="setting-item">
+                    <label>🎨 Visual Effects</label>
+                    <input type="checkbox" id="visualEffects" checked>
+                </div>
+                <div class="setting-item">
+                    <label>🌙 Dark Mode</label>
+                    <input type="checkbox" id="darkMode" checked>
+                </div>
+            </div>
+            <div class="settings-actions">
+                <button id="resetProgress" class="settings-btn danger">🗑️ Reset Progress</button>
+                <button id="exportData" class="settings-btn">📤 Export Data</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
