@@ -21,3 +21,9 @@ Welcome to **Ultra Pong Master**, the most advanced and addictive Ping Pong game
 Stay tuned! The game will be hosted online shortly.
 
 ---
+ ## Host on
+ - REPLIT
+ - VERCEL
+ - RAILWAY
+ - HEROKU
+ - ETC
